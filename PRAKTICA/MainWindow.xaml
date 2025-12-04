@@ -227,7 +227,7 @@
                         <!-- Кнопка Войти -->
                         <Button x:Name="LoginButton"
                               Style="{StaticResource PrimaryButtonStyle}"
-                              Content="Войти"/>
+                              Content="Войти" />
 
                         <!-- Ссылка "Не можете войти?" -->
                         <Button x:Name="ForgotPasswordButton"
@@ -239,7 +239,7 @@
                         <!-- Разделитель -->
                         <Border Height="1"
                               Background="#E9ECEF"
-                              Margin="0,0,0,30"/>
+                              Margin="0,0,0,30" Cursor=""/>
 
                         <!-- Кнопка Регистрации -->
                         <Button x:Name="RegisterButton"

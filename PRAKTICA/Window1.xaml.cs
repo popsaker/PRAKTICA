@@ -1,4 +1,5 @@
 ﻿using System;
+using PRAKTICA;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +15,16 @@ using System.Windows.Shapes;
 
 namespace PRAKTICA
 {
-    /// <summary>
-    /// Логика взаимодействия для Window1.xaml
-    /// </summary>
     public partial class Window1 : Window
     {
         public Window1()
         {
             
+        }
+        private void ContinueButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Регистрация!");
+            this.Close(); // Закрыть окно регистрации
         }
     }
 }

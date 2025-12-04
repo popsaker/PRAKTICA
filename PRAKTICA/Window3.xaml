@@ -1,0 +1,388 @@
+﻿<Window x:Class="CapitalLeasing.CarCatalogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="CAPITAL LEASING" 
+        Height="1009" 
+        Width="1383"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="Black">
+
+    <Grid>
+        <!-- Верхняя панель -->
+        <Border Background="#222222" Height="40" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Москва" Foreground="White" FontSize="14" Margin="0,0,30,0"/>
+                <TextBlock Text="8.322.228-14-88" Foreground="White" FontSize="14" Margin="0,0,30,0"/>
+                <Button Content="Контакты" Background="Transparent" BorderThickness="0" Foreground="White" Cursor="Hand" Padding="5,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Навигационная панель -->
+        <Border Background="#111111" Height="60" VerticalAlignment="Top" Margin="0,40,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="CAPITAL LEASING" 
+                         Foreground="White" 
+                         FontSize="24" 
+                         FontWeight="Bold"
+                         VerticalAlignment="Center"
+                         Margin="95,0,1026,0" Grid.ColumnSpan="2"/>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button Content="Каталог авто" Background="Transparent" BorderThickness="0" Foreground="White" FontSize="16" Cursor="Hand" Margin="0,0,30,0"/>
+                    <Button Content="Клиентский сервис" Background="Transparent" BorderThickness="0" Foreground="White" FontSize="16" Cursor="Hand" Margin="0,0,30,0"/>
+                    <Button Content="Личный кабинет" Background="Transparent" BorderThickness="0" Foreground="White" FontSize="16" Cursor="Hand"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Основной контент -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,100,0,0">
+            <StackPanel Margin="40,20,40,40">
+
+                <!-- Заголовок -->
+                <TextBlock Text="Легковые автомобили в лизинг от CAPITAL LEASING"
+                         Foreground="White" 
+                         FontSize="28" 
+                         FontWeight="Bold"
+                         Margin="0,0,0,30"/>
+
+                <!-- Панель фильтров -->
+                <Border Background="#222222" CornerRadius="8" Padding="30" Margin="0,0,0,30">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Левая колонка -->
+                        <StackPanel Grid.Column="0">
+
+                            <TextBlock Text="Марка" Foreground="White" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                            <!-- Поле для ввода марки -->
+                            <Border Background="#333333" CornerRadius="4" Width="602" Margin="0,0,0,30">
+                                <Grid>
+                                    <TextBox x:Name="BrandTextBox"
+                                           Background="Transparent" 
+                                           BorderThickness="0"
+                                           Foreground="White"
+                                           FontSize="14"
+                                           Padding="10,5"
+                                           TextChanged="BrandTextBox_TextChanged" Margin="-190,0,190,0"/>
+                                    <TextBlock x:Name="BrandPlaceholder"
+                                             Text="Введите марку"
+                                             Foreground="#888888"
+                                             FontSize="14"
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Left"
+                                             Margin="10,0,0,0"
+                                             IsHitTestVisible="False">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BrandTextBox}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BrandTextBox}" Value="{x:Null}">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+
+                            <TextBlock Text="Мощность двигателя, л.с." Foreground="White" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                                <!-- Поле для минимальной мощности -->
+                                <Border Background="#333333" CornerRadius="4" Width="100">
+                                    <Grid>
+                                        <TextBox x:Name="MinPowerTextBox"
+                                               Background="Transparent" 
+                                               BorderThickness="0"
+                                               Foreground="White"
+                                               FontSize="14"
+                                               Padding="10,5"
+                                               TextAlignment="Center"
+                                               TextChanged="MinPowerTextBox_TextChanged"
+                                               PreviewTextInput="PowerTextBox_PreviewTextInput"/>
+                                        <TextBlock x:Name="MinPowerPlaceholder"
+                                                 Text="От 80"
+                                                 Foreground="#888888"
+                                                 FontSize="14"
+                                                 VerticalAlignment="Center"
+                                                 HorizontalAlignment="Center"
+                                                 IsHitTestVisible="False">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=MinPowerTextBox}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=MinPowerTextBox}" Value="{x:Null}">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+
+                                <TextBlock Text="—" Foreground="White" FontSize="14" Margin="10,0,10,0" VerticalAlignment="Center"/>
+
+                                <!-- Поле для максимальной мощности -->
+                                <Border Background="#333333" CornerRadius="4" Width="100">
+                                    <Grid>
+                                        <TextBox x:Name="MaxPowerTextBox"
+                                               Background="Transparent" 
+                                               BorderThickness="0"
+                                               Foreground="White"
+                                               FontSize="14"
+                                               Padding="10,5"
+                                               TextAlignment="Center"
+                                               TextChanged="MaxPowerTextBox_TextChanged"
+                                               PreviewTextInput="PowerTextBox_PreviewTextInput"/>
+                                        <TextBlock x:Name="MaxPowerPlaceholder"
+                                                 Text="До 1974"
+                                                 Foreground="#888888"
+                                                 FontSize="14"
+                                                 VerticalAlignment="Center"
+                                                 HorizontalAlignment="Center"
+                                                 IsHitTestVisible="False">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=MaxPowerTextBox}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=MaxPowerTextBox}" Value="{x:Null}">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Правая колонка -->
+                        <StackPanel Grid.Column="1" Margin="40,0,0,0">
+                            <TextBlock Text="Кузов" Foreground="White" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                            <WrapPanel Margin="0,0,0,10">
+                                <Border Background="#333333" CornerRadius="4" Padding="10,5" Margin="0,0,10,10">
+                                    <TextBlock Text="Универсал" Foreground="#CCCCCC" FontSize="14"/>
+                                </Border>
+                                <Border Background="#333333" CornerRadius="4" Padding="10,5" Margin="0,0,10,10">
+                                    <TextBlock Text="Кроссовер" Foreground="#CCCCCC" FontSize="14"/>
+                                </Border>
+                                <Border Background="#333333" CornerRadius="4" Padding="10,5" Margin="0,0,10,10">
+                                    <TextBlock Text="Седан" Foreground="#CCCCCC" FontSize="14"/>
+                                </Border>
+                                <Border Background="#333333" CornerRadius="4" Padding="10,5" Margin="0,0,10,10">
+                                    <TextBlock Text="Внедорожник" Foreground="#CCCCCC" FontSize="14"/>
+                                </Border>
+                                <Border Background="#333333" CornerRadius="4" Padding="10,5" Margin="0,0,10,10">
+                                    <TextBlock Text="Пикап" Foreground="#CCCCCC" FontSize="14"/>
+                                </Border>
+                                <Border Background="#333333" CornerRadius="4" Padding="10,5" Margin="0,0,10,10">
+                                    <TextBlock Text="Хэтчбек" Foreground="#CCCCCC" FontSize="14"/>
+                                </Border>
+                            </WrapPanel>
+
+                            <TextBlock Text="Трансмиссия" Foreground="White" FontSize="16" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Border Background="#333333" CornerRadius="4" Padding="10,5" Margin="0,0,10,0">
+                                    <TextBlock Text="Автомат" Foreground="#CCCCCC" FontSize="14"/>
+                                </Border>
+                                <Border Background="#333333" CornerRadius="4" Padding="10,5">
+                                    <TextBlock Text="Механика" Foreground="#CCCCCC" FontSize="14"/>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Разделитель -->
+                <Border Height="2" Background="#333333" Margin="0,0,0,30"/>
+
+                <!-- Автомобили - 4 в ряд -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- UAZ PATRIOT 1 -->
+                    <Border Background="#222222" CornerRadius="8" Padding="20" Margin="10,0,44,0" Grid.ColumnSpan="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Заголовок и характеристики -->
+                            <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
+                                <TextBlock Text="UAZ PATRIOT" Foreground="White" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <TextBlock Text="Местоположение:" Foreground="#CCCCCC" FontSize="14" Margin="0,0,5,0"/>
+                                    <TextBlock Text="Ростовская обл" Foreground="White" FontSize="14"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                    <TextBlock Text="Мощность:" Foreground="#CCCCCC" FontSize="14" Margin="0,0,5,0"/>
+                                    <TextBlock Text="149" Foreground="White" FontSize="14"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Трансмиссия:" Foreground="#CCCCCC" FontSize="14" Margin="0,0,5,0"/>
+                                    <TextBlock Text="механика" Foreground="White" FontSize="14"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <!-- Кнопка избранного -->
+                            <Button Grid.Row="1" Grid.ColumnSpan="2" 
+                                    Content="В избранное" 
+                                    Background="Transparent" 
+                                    BorderBrush="#666666" 
+                                    BorderThickness="1"
+                                    Foreground="#666666"
+                                    FontSize="12"
+                                    Padding="10,5"
+                                    Cursor="Hand"
+                                    Margin="0,15,0,20"
+                                    HorizontalAlignment="Left"
+                                    Click="FavoriteButton_Click"/>
+
+                            <!-- Цена и график -->
+                            <StackPanel Grid.Row="2" Grid.Column="0">
+                                <TextBlock Text="2 500 000 р." Foreground="White" FontSize="22" FontWeight="Bold"/>
+                                <TextBlock Text="Стоимость" Foreground="#CCCCCC" FontSize="14" Margin="0,5,0,10"/>
+                            </StackPanel>
+
+                            <!-- Ежемесячный платеж -->
+                            <StackPanel Grid.Row="2" Grid.Column="1">
+                                <TextBlock Text="от 50 000 р." Foreground="#4CAF50" FontSize="18" FontWeight="Bold"/>
+                                <TextBlock Text="Платеж в месяц" Foreground="#CCCCCC" FontSize="14" Margin="0,5,0,0"/>
+                            </StackPanel>
+
+                            <!-- Изображение автомобиля -->
+                            <Border Grid.Row="3" Grid.ColumnSpan="2" 
+                                    Background="#333333" 
+                                    Height="120" 
+                                    CornerRadius="6"
+                                    Margin="0,20,0,0"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- BMW M5 -->
+                    <Border Background="#222222" CornerRadius="8" Padding="20" Margin="0,0,10,0" Grid.ColumnSpan="2" Grid.Column="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Заголовок и характеристики -->
+                            <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
+                                <TextBlock Text="BMW M5" Foreground="White" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <TextBlock Text="Местоположение:" Foreground="#CCCCCC" FontSize="14" Margin="0,0,5,0"/>
+                                    <TextBlock Text="Москва" Foreground="White" FontSize="14"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                    <TextBlock Text="Мощность:" Foreground="#CCCCCC" FontSize="14" Margin="0,0,5,0"/>
+                                    <TextBlock Text="276" Foreground="White" FontSize="14"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Трансмиссия:" Foreground="#CCCCCC" FontSize="14" Margin="0,0,5,0"/>
+                                    <TextBlock Text="автомат" Foreground="White" FontSize="14"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <!-- Кнопка избранного -->
+                            <Button Grid.Row="1" Grid.ColumnSpan="2" 
+                                    Content="В избранное" 
+                                    Background="Transparent" 
+                                    BorderBrush="#666666" 
+                                    BorderThickness="1"
+                                    Foreground="#666666"
+                                    FontSize="12"
+                                    Padding="10,5"
+                                    Cursor="Hand"
+                                    Margin="0,15,0,20"
+                                    HorizontalAlignment="Left"
+                                    Click="FavoriteButton_Click"/>
+
+                            <!-- Цена и график -->
+                            <StackPanel Grid.Row="2" Grid.Column="0">
+                                <TextBlock Text="5 000 000 р." Foreground="White" FontSize="22" FontWeight="Bold"/>
+                                <TextBlock Text="Стоимость" Foreground="#CCCCCC" FontSize="14" Margin="0,5,0,10"/>
+                            </StackPanel>
+
+                            <!-- Ежемесячный платеж -->
+                            <StackPanel Grid.Row="2" Grid.Column="1">
+                                <TextBlock Text="от 100 000 р." Foreground="#4CAF50" FontSize="18" FontWeight="Bold"/>
+                                <TextBlock Text="Платеж в месяц" Foreground="#CCCCCC" FontSize="14" Margin="0,5,0,0"/>
+                            </StackPanel>
+
+                            <!-- Изображение автомобиля -->
+                            <Border Grid.Row="3" Grid.ColumnSpan="2" 
+                                    Background="#333333" 
+                                    Height="120" 
+                                    CornerRadius="6"
+                                    Margin="0,20,0,0"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- UAZ PATRIOT 2 -->
+
+                    <!-- BMW X5 -->
+                </Grid>
+
+            </StackPanel>
+        </ScrollViewer>
+        <Image Margin="235,756,879,119" Source="/Image8.png" Stretch="Fill"/>
+        <Image Margin="40,45,1288,898" Source="/Image1.png" Stretch="Fill" RenderTransformOrigin="0.609,0.91"/>
+        <Image Margin="942,756,179,119" Source="/Image9.png" Stretch="Fill"/>
+    </Grid>
+</Window>

@@ -15,13 +15,13 @@ using System.Windows.Shapes;
 namespace PRAKTICA
 {
     /// <summary>
-    /// Логика взаимодействия для Window2.xaml
+    /// Логика взаимодействия для Window4.xaml
     /// </summary>
-    public partial class Window2 : Window
+    public partial class Window4 : Window
     {
-        public Window2()
+        public Window4()
         {
-           
+            InitializeComponent();
         }
     }
 }
