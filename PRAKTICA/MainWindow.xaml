@@ -339,6 +339,10 @@
         </ScrollViewer>
         <Image Height="100" Width="100"/>
         <Image HorizontalAlignment="Left" Height="111" Margin="424,10,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="-2.231,-1.842"/>
-        <Image Margin="429,10,868,705" Source="/Image1.png" Stretch="Fill"/>
+        <TextBox HorizontalAlignment="Left" Margin="396,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Height="92" SelectionTextBrush="{x:Null}" BorderBrush="{x:Null}">
+            <TextBox.Background>
+                <ImageBrush ImageSource="/Image1.png"/>
+            </TextBox.Background>
+        </TextBox>
     </Grid>
 </Window>
