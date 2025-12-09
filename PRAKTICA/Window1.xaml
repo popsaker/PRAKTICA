@@ -190,12 +190,7 @@
                             </StackPanel>
 
                             <!-- Отчество -->
-                            <StackPanel Grid.Column="2">
-                                <TextBlock Text="Отчество"
-                                         Style="{StaticResource LabelStyle}" Foreground="White"/>
-                                <TextBox x:Name="MiddleNameTextBox"
-                                       Style="{StaticResource TextBoxStyle}" Margin="0,0,0,0"/>
-                            </StackPanel>
+                            <StackPanel Grid.Column="2"/>
                         </Grid>
 
                         <!-- Логин -->

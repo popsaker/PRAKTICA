@@ -1,4 +1,5 @@
-﻿using PRAKTICA;
+﻿using Example;
+using PRAKTICA;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -30,18 +31,41 @@ namespace CapitalLeasing
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            string username = LoginTextBox.Text;
+            // Получаем логин из текстового поля и удаляем лишние пробелы
+            string login = LoginTextBox.Text.Trim();
+            // Получаем пароль из поля для пароля (PasswordBox скрывает ввод)
             string password = PasswordBox.Password;
 
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            // Валидация ввода: проверяем, что оба поля заполнены
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Пожалуйста, заполните все поля", "Ошибка входа",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Введите логин и пароль");
                 return;
             }
 
+            // Вызываем метод аутентификации из сервиса базы данных
+            // DbService.AuthenticateUser проверяет логин/пароль в базе данных
+            var user = DbService.AuthenticateUser(login, password);
+
+            // Проверяем результат аутентификации
+            if (user != null)
+            {
+                // Если пользователь найден (аутентификация успешна):
+
+                // Открываем окно, соответствующее роли пользователя
+                Window3 window3 = new Window3();
+                window3.Show();
+                // скрываем, но не уничтожаем
+                // Окно невидимо, но продолжает существовать в памяти
+                // Можно вернуться к нему позже (например, при разлогине)
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Неверный логин или пароль");
+            }
+
             // Здесь ваша логика авторизации
-            // ...
         }
 
         private void ForgotPasswordButton_Click(object sender, RoutedEventArgs e)
@@ -54,7 +78,7 @@ namespace CapitalLeasing
         {
             try
             {
-                // Открываем окно регистрации Window1
+                // Открываем окно регистрации Window4
                 Window4 registrationWindow = new Window4();
 
                 // Скрываем текущее окно входа

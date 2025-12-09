@@ -3,11 +3,11 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Text.RegularExpressions;
 
-namespace CapitalLeasing
+namespace PRAKTICA
 {
-    public partial class CarCatalogWindow : Window
+    public partial class Window3 : Window
     {
-        public CarCatalogWindow()
+        public Window3()
         {
             InitializeComponent();
 

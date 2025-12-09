@@ -312,6 +312,7 @@
                                  Foreground="White"
                                  />
                     </StackPanel>
+                    
 
                     <!-- Кнопка Telegram -->
                     <Button x:Name="TelegramButton"
@@ -334,6 +335,7 @@
                           Margin="0,15,0,0"/>
 
                 </StackPanel>
+                
 
             </StackPanel>
         </ScrollViewer>
