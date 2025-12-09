@@ -142,7 +142,7 @@
 
     <!-- ИСПРАВЛЕННАЯ ЧАСТЬ: убраны кривые маргины -->
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Background="Black" Margin="0,0,-132,-60">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Background="Black" Margin="0,0,10,10">
             <StackPanel Margin="40" VerticalAlignment="Center">
 
                 <!-- Заголовок -->
@@ -253,5 +253,10 @@
 
             </StackPanel>
         </ScrollViewer>
+        <TextBox HorizontalAlignment="Left" Margin="64,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" Height="60" SelectionTextBrush="{x:Null}">
+            <TextBox.Background>
+                <ImageBrush ImageSource="/Image1.png"/>
+            </TextBox.Background>
+        </TextBox>
     </Grid>
 </Window>

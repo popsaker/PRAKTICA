@@ -123,6 +123,10 @@
     </Window.Resources>
 
     <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="366*"/>
+        </Grid.RowDefinitions>
         <!-- Верхняя панель с контактами -->
         <Border Background="#333333" Height="40" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -133,7 +137,7 @@
         </Border>
 
         <!-- Основная навигационная панель -->
-        <Border Background="#222222" Height="60" VerticalAlignment="Top" Margin="0,40,0,0">
+        <Border Background="#222222" Height="60" VerticalAlignment="Top" Margin="0,40,0,0" Grid.RowSpan="2">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -158,22 +162,23 @@
 
                 <!-- Иконка профиля -->
                 <Border Grid.Column="2" 
-                        Width="40" 
-                        Height="40" 
-                        Background="#007BFF" 
-                        CornerRadius="20"
-                        Margin="0,0,20,0"
-                        VerticalAlignment="Center">
+        Width="40" 
+        Height="40" 
+        Background="#007BFF" 
+        CornerRadius="20"
+        Margin="0,0,20,0"
+        VerticalAlignment="Center"
+        MouseDown="ProfileIcon_MouseDown">
                     <TextBlock Text="👤" 
-                             FontSize="20" 
-                             HorizontalAlignment="Center" 
-                             VerticalAlignment="Center"/>
+             FontSize="20" 
+             HorizontalAlignment="Center" 
+             VerticalAlignment="Center"/>
                 </Border>
             </Grid>
         </Border>
 
         <!-- Основной контент -->
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,100,0,0">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,6,0,0" Grid.Row="1">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -296,8 +301,16 @@
 
             </Grid>
         </ScrollViewer>
-        <Image Margin="80,517,921,140" Source="/Image3.png" Stretch="Fill"/>
-        <Image Margin="28,45,1300,730" Source="/Image1.png" Stretch="Fill"/>
+        <TextBox HorizontalAlignment="Left" Margin="29,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Height="44" SelectionTextBrush="{x:Null}" BorderBrush="{x:Null}" RenderTransformOrigin="-0.378,0.334" Grid.RowSpan="2">
+            <TextBox.Background>
+                <ImageBrush ImageSource="/Image1.png"/>
+            </TextBox.Background>
+        </TextBox>
+        <TextBox HorizontalAlignment="Left" Margin="78,409,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="414" Height="190" SelectionTextBrush="{x:Null}" BorderBrush="{x:Null}" Grid.Row="1">
+            <TextBox.Background>
+                <ImageBrush ImageSource="/Image2.png"/>
+            </TextBox.Background>
+        </TextBox>
 
     </Grid>
 </Window>
