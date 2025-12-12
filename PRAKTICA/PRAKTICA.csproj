@@ -9,9 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
     <PackageReference Include="MySql.Data" Version="9.5.0" />
-=======
     <None Remove="Image1.png" />
     <None Remove="Image2.png" />
   </ItemGroup>
@@ -19,7 +17,6 @@
   <ItemGroup>
     <Resource Include="Image1.png" />
     <Resource Include="Image2.png" />
->>>>>>> ada5c2d99bd0e8fd81a7a3b4a0fa21e8729fadf5
   </ItemGroup>
 
 </Project>
