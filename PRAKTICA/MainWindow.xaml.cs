@@ -36,19 +36,15 @@ namespace CapitalLeasing
             // Получаем пароль из поля для пароля (PasswordBox скрывает ввод)
             string password = PasswordBox.Password;
 
-<<<<<<< HEAD
             // Валидация ввода: проверяем, что оба поля заполнены
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
-=======
             // Проверка на пустые поля
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
->>>>>>> ada5c2d99bd0e8fd81a7a3b4a0fa21e8729fadf5
             {
                 MessageBox.Show("Введите логин и пароль");
                 return;
             }
 
-<<<<<<< HEAD
             // Вызываем метод аутентификации из сервиса базы данных
             // DbService.AuthenticateUser проверяет логин/пароль в базе данных
             var user = DbService.AuthenticateUser(login, password);
@@ -72,7 +68,6 @@ namespace CapitalLeasing
             }
 
             // Здесь ваша логика авторизации
-=======
             // ПРОВЕРКА НА АДМИНА
             if (username == "Admin" && password == "123")
             {
@@ -160,7 +155,6 @@ namespace CapitalLeasing
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
->>>>>>> ada5c2d99bd0e8fd81a7a3b4a0fa21e8729fadf5
         }
 
         private void ForgotPasswordButton_Click(object sender, RoutedEventArgs e)
@@ -173,13 +167,10 @@ namespace CapitalLeasing
         {
             try
             {
-<<<<<<< HEAD
                 // Открываем окно регистрации Window4
                 Window4 registrationWindow = new Window4();
-=======
                 // Открываем окно регистрации Window1
                 Window1 registrationWindow = new Window1();
->>>>>>> ada5c2d99bd0e8fd81a7a3b4a0fa21e8729fadf5
 
                 // Закрываем текущее окно входа
                 this.Close();
