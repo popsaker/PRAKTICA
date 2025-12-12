@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +25,6 @@ namespace PRAKTICA
         }
     }
 }
-=======
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -363,4 +361,3 @@ namespace PRAKTICA
         public double EngineVolume { get; set; }
     }
 }
->>>>>>> ada5c2d99bd0e8fd81a7a3b4a0fa21e8729fadf5
